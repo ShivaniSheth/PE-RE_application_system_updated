@@ -8,6 +8,10 @@ const { Header, Content, Footer, Sider } = Layout;
 const { Title } = Typography;
 
 export default class Login extends Component {
+    login = () => {
+        window.location.replace("/home")
+    }
+
     register = () => {
         window.location.replace("/register")
     }
@@ -20,7 +24,7 @@ export default class Login extends Component {
                         <Row justify='center' align='middle'>
                             <img
                                 width={200}
-                                src={"./iiitb.png"}
+                                src={"../../iiitb.png"}
                             />
                         </Row>
                         <Row justify='center' align='bottom'>
@@ -51,7 +55,7 @@ export default class Login extends Component {
                                 </Form.Item>
 
                                 <Form.Item>
-                                    <Button type="primary" htmlType="submit" className="login-form-button">
+                                    <Button type="primary" htmlType="submit" className="login-form-button" onClick={this.login} >
                                     Log in
                                     </Button>
                                 </Form.Item>

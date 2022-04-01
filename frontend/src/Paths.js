@@ -8,6 +8,7 @@ import {
 
 import Login from './Pages/Login/Login';
 import Register from './Pages/Login/Register';
+import Home from './Pages/Home/Home';
 
 export default class Paths extends Component {
     render(){
@@ -17,10 +18,15 @@ export default class Paths extends Component {
                     <Route path="/login">
                         <Login />
                     </Route>
+
                     <Route path="/register">
                         <Register />
                     </Route>
-                    <Route path="/home"></Route>
+
+                    <Route path="/home">
+                        <Home />
+                    </Route>
+                    
                     <Route exact path="/">
                         <Redirect to="/login" /> 
                     </Route>
