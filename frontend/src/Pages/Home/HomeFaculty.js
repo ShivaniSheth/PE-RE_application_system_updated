@@ -7,8 +7,9 @@ import {
     SettingOutlined,
 } from '@ant-design/icons';
 import Feed from '../Content/Feed'
-import PE from '../Content/PE'
-import RE from '../Content/RE'
+import Application from '../Content/Application';
+import Manage from '../Content/Manage';
+import AddApp from '../Content/AddApp';
 
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -42,14 +43,14 @@ export default class Home extends Component {
         case "home":
             renderTab = <Feed />;
             break;
-        case "pe":
-            renderTab = <PE {...this}></PE>;
+        case "application":
+            renderTab = <Application {...this}></Application>;
             break;
-        case "re":
-            renderTab = <RE {...this}></RE>;
+        case "manage_app":
+            renderTab = <Manage {...this.state}{...this}></Manage>;
             break;
-        case "faculty":
-            renderTab = <RE {...this}></RE>;
+        case "add_app":
+            renderTab = <AddApp {...this}></AddApp>;
             break;
         default:
             renderTab = <Feed />;
@@ -81,14 +82,11 @@ export default class Home extends Component {
                                 <Menu.Item key="home" icon={<HomeOutlined />} onClick={(e) => {this.onTabChange(e)}}>
                                 Home
                                 </Menu.Item>
-                                <Menu.Item key="pe" icon={<ProjectOutlined />} onClick={(e) => {this.onTabChange(e)}}>
-                                Project Electives
+                                <Menu.Item key="application" icon={<ProjectOutlined />} onClick={(e) => {this.onTabChange(e)}}>
+                                Application
                                 </Menu.Item>
-                                <Menu.Item key="re" icon={<ProjectOutlined />} onClick={(e) => {this.onTabChange(e)}}>
-                                Research Electives
-                                </Menu.Item>
-                                <Menu.Item key="faculty" icon={<TeamOutlined />} onClick={(e) => {this.onTabChange(e)}}>
-                                Faculty
+                                <Menu.Item key="manage_app" icon={<ProjectOutlined />} onClick={(e) => {this.onTabChange(e)}}>
+                                Manage Application
                                 </Menu.Item>
                                 <SubMenu icon={<SettingOutlined />} title="Settings">
                                     <Menu.Item key="5">Profile</Menu.Item>

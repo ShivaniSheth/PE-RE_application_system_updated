@@ -1,5 +1,5 @@
 import React, { Component } from 'react'   
-import { Form, Input, Button, Image, Divider, Row, Typography, Layout } from 'antd';
+import { Form, Input, Button, Cascader, Divider, Row, Typography, Layout } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import 'antd/dist/antd.css';
 import './Login.css';
@@ -7,9 +7,24 @@ import './Login.css';
 const { Header, Content, Footer, Sider } = Layout;
 const { Title } = Typography;
 
+const designation = [
+    {
+      value: 'professor',
+      label: 'Professor',
+    },
+    {
+      value: 'student',
+      label: 'Student',
+    }
+  ];
+
 export default class Login extends Component {
     login = () => {
         window.location.replace("/home")
+    }
+
+    login_faculty = () => {
+        window.location.replace("/home_faculty")
     }
 
     register = () => {
@@ -54,9 +69,25 @@ export default class Login extends Component {
                                     />
                                 </Form.Item>
 
+                                <Form.Item
+                                    name="designation"
+                                    // label="Designation"
+                                    rules={[
+                                    { type: 'array', required: true, message: 'Please select your Designation!' },
+                                    ]}
+                                >
+                                    <Cascader options={designation} placeholder="designation"/>
+                                </Form.Item>
+
                                 <Form.Item>
                                     <Button type="primary" htmlType="submit" className="login-form-button" onClick={this.login} >
                                     Log in
+                                    </Button>
+                                </Form.Item>
+
+                                <Form.Item>
+                                    <Button htmlType="submit" className="login-form-button" onClick={this.login_faculty} >
+                                    Faculty Log in
                                     </Button>
                                 </Form.Item>
 
