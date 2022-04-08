@@ -71,7 +71,6 @@ export default class Login extends Component {
 
                                 <Form.Item
                                     name="designation"
-                                    // label="Designation"
                                     rules={[
                                     { type: 'array', required: true, message: 'Please select your Designation!' },
                                     ]}

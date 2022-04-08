@@ -9,7 +9,6 @@ import {
 import Feed from '../Content/Feed'
 import Application from '../Content/Application';
 import Manage from '../Content/Manage';
-import AddApp from '../Content/AddApp';
 
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -48,9 +47,6 @@ export default class Home extends Component {
             break;
         case "manage_app":
             renderTab = <Manage {...this.state}{...this}></Manage>;
-            break;
-        case "add_app":
-            renderTab = <AddApp {...this}></AddApp>;
             break;
         default:
             renderTab = <Feed />;
