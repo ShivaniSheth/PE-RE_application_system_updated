@@ -47,11 +47,14 @@ let projs = [
 
 export default class RE extends Component {
   state = {
-    columns: cols,
-    projects: projs,
-    filtered: projs,
-    count: "",
+    columns: [],
+    projects: [],
+    filtered: [],
   };
+
+  componentDidMount = () => {
+    this.setState({projects: projs, columns: cols, filtered: projs})
+  }
 
   onSearch = (value) => {
     let data = this.state.projects;
@@ -78,7 +81,7 @@ export default class RE extends Component {
   };
 
   render(){   
-    const { count, columns, projects, filtered } = this.state;
+    const {columns, projects, filtered } = this.state;
     console.log(projects)
     console.log(filtered)
 
