@@ -57,7 +57,7 @@ export default class Home extends Component {
         }
         return(
             <Layout style={{ minHeight: '100vh' }}>
-                <Header className="header">
+                <Header className="header" style={{textAlign: 'center', marginLeft: '-200px'}}>
                     <div>
                         <Row align='middle'>
                             <Col span={14} push={8}>

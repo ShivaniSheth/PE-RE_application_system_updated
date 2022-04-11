@@ -52,10 +52,10 @@ export default class Login extends Component {
                                 <Title className="center_title" level={3}>PE/RE Application System</Title>
                                 <Divider plain>Login form</Divider>    
                                 <Form.Item
-                                    name="username"
-                                    rules={[{ required: true, message: 'Please input your Username!' }]}
+                                    name="email"
+                                    rules={[{ required: true, message: 'Please input your Email!' }]}
                                 >
-                                    <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
+                                    <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Email" />
                                 </Form.Item>
 
                                 <Form.Item
@@ -91,7 +91,7 @@ export default class Login extends Component {
                                 </Form.Item>
 
                                 <Form.Item>
-                                    <Button htmlType="submit" className="login-form-button" onClick={this.register} >
+                                    <Button className="login-form-button" onClick={this.register} >
                                     or Register
                                     </Button>
                                 </Form.Item>

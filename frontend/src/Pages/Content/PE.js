@@ -1,6 +1,9 @@
-import { Col, Row, Table, Button, Input } from 'antd';
+import { Col, Row, Table, Button, Input, Form, Typography } from 'antd';
 import Layout, { Content, Header } from 'antd/lib/layout/layout';
+import Modal from 'antd/lib/modal/Modal';
+import Column from 'antd/lib/table/Column';
 import React, { Component, useState } from 'react';
+import ApplyForm from './ApplyForm';
 
 const { Search } = Input;
 let cols = [
@@ -33,7 +36,6 @@ let projs = [
     professor: "ABC",
     description: "Hello world",
     slots: 10,
-    apply: <Button type='primary'>apply</Button>
   },
   {
       key: '2',
@@ -41,7 +43,6 @@ let projs = [
       professor: "ABC",
       description: "Hello world",
       slots: 5,
-      apply: <Button type='primary'>apply</Button>
   },
   {
       key: '3',
@@ -49,16 +50,23 @@ let projs = [
       professor: "sdfsdf",
       description: "Hello world",
       slots: 4,
-      apply: <Button type='primary'>apply</Button>
   },
 ];
 
 export default class PE extends Component {
-  state = {
-    columns: [],
-    projects: [],
-    filtered: [],
-  };
+  editFormRef = React.createRef();
+  constructor(props){
+    super(props);
+    this.state = {
+      columns: [],
+      projects: [],
+      filtered: [],
+      applyProject: {},
+      applyModal: false,
+    }
+    this.editModalForm = this.editModalForm.bind(this)
+    this.onCancelApply = this.onCancelApply.bind(this)
+  }
 
   componentDidMount = () => {
     this.setState({projects: projs, columns: cols, filtered: projs})
@@ -88,10 +96,27 @@ export default class PE extends Component {
     }
   };
 
+  editModalForm = () => {
+    let record = this.state.applyProject;
+    console.log(record)
+    this.editFormRef.current.setFieldsValue({
+      name: record.name,
+      professor: record.professor,
+      description: record.description,
+    });
+  }
+
+  onApply = (record) => {
+    console.log(record);
+    this.setState({applyProject: record, applyModal: true})
+  }
+
+  onCancelApply = () => {
+    this.setState({applyModal: false})
+  }
+
   render(){   
     const { columns, projects, filtered } = this.state;
-    console.log(projects)
-    console.log(filtered)
 
     return(
       <Layout>
@@ -106,7 +131,24 @@ export default class PE extends Component {
           />
         </Header>
         <Content>
-          <Table columns={columns} dataSource={filtered} />
+          <Table  dataSource={filtered} >
+            <Column key="name" dataIndex={"name"} title="Name"/>
+            <Column key ="description" dataIndex={"description"} title="Description"/>
+            <Column dataIndex="slots" title="Slot"/>
+            <Column dataIndex="professor" title="Professor"/>
+            <Column key="action" render={(r) => {
+              return(
+                <Button type='primary' onClick={() => this.onApply(r)}>Apply</Button>
+              )
+            }}></Column>
+          </Table>
+          <Modal
+            visible={this.state.applyModal}
+            title="Application Form"
+            footer={null}
+          >
+            <ApplyForm {...this}{...this.state}></ApplyForm>
+          </Modal>
         </Content>
       </Layout>
     )
