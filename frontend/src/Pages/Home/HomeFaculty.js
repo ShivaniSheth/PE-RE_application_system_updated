@@ -85,8 +85,7 @@ export default class Home extends Component {
                                 Manage Application
                                 </Menu.Item>
                                 <SubMenu icon={<SettingOutlined />} title="Settings">
-                                    <Menu.Item key="5">Profile</Menu.Item>
-                                    <Menu.Item key="6" onClick={this.logout}>Logout</Menu.Item>
+                                    <Menu.Item key="logout" onClick={this.logout}>Logout</Menu.Item>
                                 </SubMenu>
                             </Menu>
                         </div>

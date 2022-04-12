@@ -9,6 +9,7 @@ import {
 import Feed from '../Content/Feed'
 import PE from '../Content/PE'
 import RE from '../Content/RE'
+import Faculty from '../Content/Faculty';
 
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -49,7 +50,7 @@ export default class Home extends Component {
             renderTab = <RE {...this}></RE>;
             break;
         case "faculty":
-            renderTab = <RE {...this}></RE>;
+            renderTab = <Faculty {...this}></Faculty>;
             break;
         default:
             renderTab = <Feed />;
@@ -91,8 +92,7 @@ export default class Home extends Component {
                                 Faculty
                                 </Menu.Item>
                                 <SubMenu icon={<SettingOutlined />} title="Settings">
-                                    <Menu.Item key="5">Profile</Menu.Item>
-                                    <Menu.Item key="6" onClick={this.logout}>Logout</Menu.Item>
+                                    <Menu.Item key="logout" onClick={this.logout}>Logout</Menu.Item>
                                 </SubMenu>
                             </Menu>
                         </div>

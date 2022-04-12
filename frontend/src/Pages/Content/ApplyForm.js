@@ -20,7 +20,6 @@ export default class ApplyForm extends Component {
                 name='name'
                 label='Name'
               >
-                {/* <Typography.Text /> */}
                 <Input />
               </Form.Item>
 
@@ -28,7 +27,6 @@ export default class ApplyForm extends Component {
                 name='professor'
                 label='Professor'
               >
-                {/* <Typography.Text /> */}
                 <Input />
               </Form.Item>
 
@@ -36,7 +34,6 @@ export default class ApplyForm extends Component {
                 name='description'
                 label='Description'
               >
-                {/* <Typography.Text /> */}
                 <Input />
               </Form.Item>
 
